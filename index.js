@@ -1,6 +1,8 @@
 let inquirer = require('inquirer')
+const Rx = require('rx')
 let random_word = require('./app_modules/random_word.js')
 let Word = require('./app_modules/word.js')
+let prompts = new Rx.Subject()
 
 let question = {
     type: 'input',
@@ -17,6 +19,8 @@ let question = {
 }
 let word_array = random_word()
 
+
+const app = () => {
 inquirer.prompt(question).then(answers => {
     //Contains an array of the letters for the current chosen word. This will be refered to to update guessed_so_far.
     let word_letters = []
@@ -40,16 +44,29 @@ inquirer.prompt(question).then(answers => {
     guessed_so_far.map((obj) => {
         display_array.push(obj.user_display())
     })
-    console.log(display_array.join(` `))
+    let current_display = display_array.join(` `)
+    console.log(current_display)
 
     
 
     
     
     
-    
+            if (current_display.includes(`_`) === true){
+                app()
+            }
+            else if (current_display.includes(`_`) === false) {
+                console.log(`You win!!!`)
+                //Then loop program to next word
+            }
     // letter_obj.map((current_obj, obj_index) => {
     //     console.log(obj_index, current_obj, `This is the index and the object`)
     //     console.log(current_obj)
     // })
 });
+
+//End of app function
+}
+
+//Calls main app.
+app()

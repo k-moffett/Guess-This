@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/moffkr91/Guess-This#readme",
   "dependencies": {
-    "inquirer": "^5.2.0"
+    "inquirer": "^5.2.0",
+    "rx": "^4.1.0"
   }
 }
