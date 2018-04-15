@@ -1,6 +1,6 @@
 
 update_user_guess = (word_letters, guessed_so_far, current_guess) => {
-    console.log(`WELL YOU MADE IT HERE AT LEAST`)
+    console.log(word_letters)
     console.log(current_guess)
     if (word_letters.includes(current_guess) === false) {
         console.log(`Wrong dummy, try again.`)
@@ -8,7 +8,11 @@ update_user_guess = (word_letters, guessed_so_far, current_guess) => {
     }
     else if (word_letters.includes(current_guess) === true) {
         //Use the below info to update the state of guessed in guessed_so_far.
-        console.log(word_letters.indexOf(current_guess))
+        let indexes = [], i = -1
+        while ((i = word_letters.indexOf(current_guess, i+1)) != -1){
+            indexes.push(i);
+        }
+        console.log(indexes, `Indexes of each object to update.`)
     }
 }
 

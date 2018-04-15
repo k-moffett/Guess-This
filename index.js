@@ -35,11 +35,7 @@ inquirer.prompt(question).then(answers => {
     })
 
 //***Crete logic for comparing guessed letter under here */
-    console.log(word_letters, `Array of word letters.`)
-    console.log(guessed_so_far, `Array of objects altered from Word.update_letter_display.`)
-
-//Need to pass variable into word constructor to use function.
-console.log(answers, `RIGHT ABOVE update_user_guess in INDEX`)
+//console.log(answers, `RIGHT ABOVE update_user_guess in INDEX`)
 update_user_guess(word_letters, guessed_so_far, answers.current_guess)
 
 //Displays current letters guessed for the user.
