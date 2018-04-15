@@ -2,6 +2,7 @@ let inquirer = require('inquirer')
 let random_word = require('./app_modules/random_word.js')
 let Word = require('./app_modules/word.js')
 let update_user_guess = require('./app_modules/update_user_guess.js')
+let update_state = require(`./app_modules/update_state.js`)
 
 let question = {
     type: 'input',
@@ -36,7 +37,10 @@ inquirer.prompt(question).then(answers => {
 
 //***Crete logic for comparing guessed letter under here */
 //console.log(answers, `RIGHT ABOVE update_user_guess in INDEX`)
-update_user_guess(word_letters, guessed_so_far, answers.current_guess)
+let indexes_to_update = update_user_guess(word_letters, guessed_so_far, answers.current_guess)
+console.log(indexes_to_update, `INDEX`)
+//Update current_display with info from indexes_to_update.
+update_state(word_letters, guessed_so_far, indexes_to_update)
 
 //Displays current letters guessed for the user.
     let display_array = []
@@ -61,6 +65,5 @@ update_user_guess(word_letters, guessed_so_far, answers.current_guess)
 });
 //End of app function
 }
-
 //Calls main app.
 app()
