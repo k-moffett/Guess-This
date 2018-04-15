@@ -10,7 +10,7 @@ class Word {
         }
     }
 
-    update_guessed(letter, guessed) {
+    update_letter_display(letter, guessed) {
         if (this.guessed === false) {
             this.letter = '_'
         }
@@ -22,6 +22,7 @@ class Word {
     user_display (obj) {
         return this.letter
     }
+
 }
 
 module.exports = Word
